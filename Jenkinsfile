@@ -16,7 +16,7 @@ pipeline {
                 sh '''
                 packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "aws_account_id=$aws_account_id" -var "source_ami=ami-f058d08a" -var "vpc_id=vpc-04bea57d" -var "subnet_id=subnet-86bb84aa" bakery_tomcat/packer/bakery.json
                 '''
-                }}
+                }}}
                
                 }
             }
