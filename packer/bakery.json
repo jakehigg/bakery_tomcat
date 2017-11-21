@@ -1,0 +1,34 @@
+{
+  "variables": {
+    "aws_access_key": "{{env `aws_access_key`}}",
+    "aws_secret_key": "{{env `aws_secret_key`}}",
+    "source_ami": "{{env `source_ami`}}",
+    "vpc_id": "{{env `vpc_id`}}",
+    "subnet_id": "{{env `subnet_id`}}"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-1",
+    "source_ami": "{{user `source_ami`}}",
+    "vpc_id": "{{user `vpc_id`}}",
+    "subnet_id": "{{user `subnet_id`}}",
+    "associate_public_ip_address": "true",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "Ubuntu Tomcat {{timestamp}}"
+  }],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline":[
+                "sudo /opt/puppetlabs/bin/puppet module install puppetlabs-tomcat --version 2.1.0",
+		"sudo /opt/puppetlabs/bin/puppet module install puppetlabs-java --version 2.2.0",
+		"git clone https://github.com/jakehigg/bakery_tomcat.git",
+		"sudo /opt/puppetlabs/bin/puppet apply bakery_tomcat/puppet/site.pp",
+		"rm -rvf bakery_tomcat"
+            ]
+        }
+    ]
+}
