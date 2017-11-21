@@ -14,7 +14,6 @@
     "source_ami_filter": {
       "filters": {
       "virtualization-type": "hvm",
-      "name": "Ubuntu Base*",
       "root-device-type": "ebs",
       "tag:OS": "Linux",
       "tag:Release": "Ubuntu16",
@@ -34,6 +33,7 @@
         "OS": "Linux",
         "Release": "Ubuntu16",
         "Role": "Tomcat",
+	"Profile": "None",
         "Version": "Latest"
      }
     
