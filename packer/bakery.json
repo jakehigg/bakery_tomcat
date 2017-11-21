@@ -17,7 +17,14 @@
     "associate_public_ip_address": "true",
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "Ubuntu Tomcat {{timestamp}}"
+    "ami_name": "Ubuntu Tomcat {{timestamp}}",
+    "tags": {
+        "OS": "Linux",
+        "Release": "Ubuntu16",
+        "Role": "Tomcat",
+        "Version": "Latest"
+     }
+    
   }],
     "provisioners": [
         {
