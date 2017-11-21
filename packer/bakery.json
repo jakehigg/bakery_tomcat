@@ -46,6 +46,9 @@
 		"sudo /opt/puppetlabs/bin/puppet module install puppetlabs-java --version 2.2.0",
 		"git clone https://github.com/jakehigg/bakery_tomcat.git",
 		"sudo /opt/puppetlabs/bin/puppet apply bakery_tomcat/puppet/site.pp",
+		"sudo echo '#!/bin/sh -e' > /etc/rc.local",
+		"sudo echo '/opt/tomcat/bin/startup.sh' >> /etc/rc.local",
+		"sudo echo 'exit 0' >> /etc/rc.local",
 		"rm -rvf bakery_tomcat"
             ]
         }
