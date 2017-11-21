@@ -3,7 +3,7 @@ node default {
 	  distribution => 'jre',
 	}
         tomcat::install { '/opt/tomcat':
-          source_url => 'http://apache.mirrors.lucidnetworks.net/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz',
+          source_url => 'http://apache.mesi.com.ar/tomcat/tomcat-9/v9.0.1/bin/apache-tomcat-9.0.1.tar.gz',
         }
         tomcat::instance { 'default':
           catalina_home => '/opt/tomcat',
