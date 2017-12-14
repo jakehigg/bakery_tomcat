@@ -1,6 +1,10 @@
 pipeline {
     agent any 
 
+    parameters {
+        string(name: 'textdata', defaultValue: '', description: 'data to add to /file')
+    }
+
     stages {
         stage('Git Packer Template') { 
             steps { 
@@ -14,7 +18,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'aws_secret_key', variable: 'aws_secret_key')]) {
                 withCredentials([string(credentialsId: 'aws_account_id', variable: 'aws_account_id')]) {
                 sh '''
-                packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "aws_account_id=$aws_account_id" -var "source_ami=ami-f058d08a" -var "vpc_id=vpc-04bea57d" -var "subnet_id=subnet-86bb84aa" bakery_tomcat/packer/bakery.json
+                packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "aws_account_id=$aws_account_id" -var "source_ami=ami-f058d08a" -var "vpc_id=vpc-04bea57d" -var "subnet_id=subnet-86bb84aa"  -var "textdata=${params.textdata}" bakery_tomcat/packer/bakery.json
                 '''
                 }}}
                

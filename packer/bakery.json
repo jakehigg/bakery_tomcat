@@ -4,7 +4,8 @@
     "aws_secret_key": "{{env `aws_secret_key`}}",
     "aws_account_id": "{{env `source_ami`}}",
     "vpc_id": "{{env `vpc_id`}}",
-    "subnet_id": "{{env `subnet_id`}}"
+    "subnet_id": "{{env `subnet_id`}}",
+    "textdata": "{{env `textdata`}}"
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -47,6 +48,7 @@
 		"git clone https://github.com/jakehigg/bakery_tomcat.git",
 		"sudo /opt/puppetlabs/bin/puppet apply bakery_tomcat/puppet/site.pp",
 		"sudo cp bakery_tomcat/packer/tomcat.service /etc/systemd/system/",
+		"sudo echo {{user `textdata`}} > /file",
 		"sudo systemctl daemon-reload",
 		"sudo systemctl enable tomcat",
 		"rm -rvf bakery_tomcat"
