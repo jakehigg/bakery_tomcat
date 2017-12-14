@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     parameters {
-        string(name: 'TEXTDATA', defaultValue: '', description: 'data to add to /file')
+        string(name: 'TEXTDATA', defaultValue: '', description: 'data to add to ~/file')
     }
 
     stages {

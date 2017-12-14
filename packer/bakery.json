@@ -48,7 +48,7 @@
 		"git clone https://github.com/jakehigg/bakery_tomcat.git",
 		"sudo /opt/puppetlabs/bin/puppet apply bakery_tomcat/puppet/site.pp",
 		"sudo cp bakery_tomcat/packer/tomcat.service /etc/systemd/system/",
-		"sudo echo {{user `textdata`}} > /file",
+		"echo {{user `textdata`}} > ~/file",
 		"sudo systemctl daemon-reload",
 		"sudo systemctl enable tomcat",
 		"rm -rvf bakery_tomcat"
